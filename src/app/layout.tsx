@@ -1,37 +1,54 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "Obbel Coffee - Kopi Enak Tanpa Jarak",
+  description: "Usaha kopi keliling yang sudah terbukti laku di lapangan. Sistem sudah jalan, cocok untuk anak muda yang mau mulai usaha kopi.",
+  keywords: ["Obbel Coffee", "kopi", "kopi susu", "kopi keliling", "franchise kopi", "usaha kopi"],
+  authors: [{ name: "Obbel Coffee Team" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/logo.svg",
+    apple: "/logo.svg",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Obbel Coffee - Kopi Enak Tanpa Jarak",
+    description: "Usaha kopi keliling yang sudah terbukti laku di lapangan. Sistem sudah jalan, cocok untuk anak muda yang mau mulai usaha kopi.",
+    url: "https://obbelcoffee.com",
+    siteName: "Obbel Coffee",
     type: "website",
+    locale: "id_ID",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Obbel Coffee",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Obbel Coffee - Kopi Enak Tanpa Jarak",
+    description: "Usaha kopi keliling yang sudah terbukti laku di lapangan. Sistem sudah jalan, cocok untuk anak muda yang mau mulai usaha kopi.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -41,9 +58,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${inter.variable} font-sans antialiased bg-white text-gray-900`}
       >
         {children}
         <Toaster />
