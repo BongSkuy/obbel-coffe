@@ -1,0 +1,43 @@
+// Prisma Schema for Production (PostgreSQL/MySQL)
+// Copy this to prisma/schema.prisma when deploying to production
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// For PostgreSQL (Supabase, Neon, etc.)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// For MySQL (PlanetScale, etc.)
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+
+// Note: Remove the SQLite datasource when deploying to Vercel
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+// }
+
+// Models (same for all database providers)
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
